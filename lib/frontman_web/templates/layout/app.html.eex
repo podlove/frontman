@@ -3,17 +3,20 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Frontman · Podlove Podcast Feed Proxy</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body class="font-sans bg-gray-100">
-    <header class="flex justify-between bg-gray-800 text-white items-center px-8 py-4">
+    <header class="flex justify-between bg-gray-900 text-white items-center px-8 py-4">
       <div class="font-medium text-4xl">
         <span>Frontman</span>
       </div>
       <div class="flex flex-row">
         <%= if assigns[:current_user] do %>
+          <div class="mr-6">
+            Signed in as <strong><%= @current_user.username %></strong>
+          </div>
           <div> 
             <%= link "logout", to: "/logout" %>
           </div>

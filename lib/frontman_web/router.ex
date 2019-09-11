@@ -11,6 +11,7 @@ defmodule FrontmanWeb.Router do
 
   pipeline :auth do
     plug Frontman.UserManager.Pipeline
+    plug FrontmanWeb.Plug.AssignCurrentUser
   end
 
   pipeline :ensure_auth do
@@ -32,6 +33,6 @@ defmodule FrontmanWeb.Router do
   scope "/", FrontmanWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/secret", PageController, :protected
+    resources "/feeds", FeedController
   end
 end

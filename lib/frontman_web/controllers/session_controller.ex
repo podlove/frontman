@@ -8,7 +8,7 @@ defmodule FrontmanWeb.SessionController do
     maybe_user = Guardian.Plug.current_resource(conn)
 
     if maybe_user do
-      redirect(conn, to: "/secret")
+      redirect(conn, to: "/feeds")
     else
       render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :login))
     end
@@ -29,7 +29,7 @@ defmodule FrontmanWeb.SessionController do
     conn
     |> put_flash(:info, "Welcome back!")
     |> Guardian.Plug.sign_in(user)
-    |> redirect(to: "/secret")
+    |> redirect(to: "/feeds")
   end
 
   defp login_reply({:error, reason}, conn) do

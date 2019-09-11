@@ -7,6 +7,8 @@ defmodule Frontman.UserManager.User do
     field :password, :string
     field :username, :string
 
+    has_many :feeds, Frontman.Directory.Feed
+
     timestamps()
   end
 
