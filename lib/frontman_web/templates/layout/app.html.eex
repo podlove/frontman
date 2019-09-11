@@ -4,25 +4,34 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Frontman · Phoenix Framework</title>
+    <title>Frontman · Podlove Podcast Feed Proxy</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-          </ul>
-        </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
+  <body class="font-sans bg-gray-100">
+    <header class="flex justify-between bg-gray-800 text-white items-center px-8 py-4">
+      <div class="font-medium text-4xl">
+        <span>Frontman</span>
+      </div>
+      <div class="flex flex-row">
+        <%= if assigns[:current_user] do %>
+          <div> 
+            <%= link "logout", to: "/logout" %>
+          </div>
+        <% else %>
+          <div> 
+            <%= link "login", to: "/login" %>
+          </div>
+        <% end %>
+      </div>
+
     </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <main class="container mx-auto">
+      <%= if get_flash(@conn, :info) do %>
+        <p class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative mb-8" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %>
+        <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
