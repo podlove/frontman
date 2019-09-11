@@ -9,18 +9,29 @@ defmodule FrontmanWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :auth do
+    plug Frontman.UserManager.Pipeline
   end
 
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
+  # Maybe logged in routes
   scope "/", FrontmanWeb do
-    pipe_through :browser
+    pipe_through [:browser, :auth]
 
     get "/", PageController, :index
+
+    get "/login", SessionController, :new
+    post "/login", SessionController, :login
+    get "/logout", SessionController, :logout
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", FrontmanWeb do
-  #   pipe_through :api
-  # end
+  # Definitely logged in scope
+  scope "/", FrontmanWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    get "/secret", PageController, :protected
+  end
 end
