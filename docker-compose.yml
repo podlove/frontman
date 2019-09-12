@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    image: postgres:alpine
+    env_file: .env
+    volumes:
+      - psql_db:/var/lib/postgresql/data
+  frontman:
+    build: .
+    ports:
+      - "$FRONTMAN_PORT:$FRONTMAN_PORT"
+    depends_on:
+      - db
+    env_file: .env
+    environment:
+      PORT: $FRONTMAN_PORT
+      PUBLIC_PORT: $FRONTMAN_PORT
+
+volumes:
+  psql_db:
