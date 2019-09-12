@@ -45,7 +45,7 @@ services:
       - 5432
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_DB: radiator_test
+      POSTGRES_DB: frontman_test
 
 volumes:
   - name: mix
