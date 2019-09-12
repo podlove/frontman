@@ -8,12 +8,13 @@ defmodule Frontman.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
       Frontman.Repo,
-      # Start the endpoint when the application starts
-      FrontmanWeb.Endpoint
-      # Starts a worker by calling: Frontman.Worker.start_link(arg)
-      # {Frontman.Worker, arg},
+      FrontmanWeb.Endpoint,
+      {ConCache,
+       [
+         name: :feeds,
+         ttl_check_interval: false
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

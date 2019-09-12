@@ -31,6 +31,25 @@ defmodule FrontmanWeb.ProxyController do
   end
 
   def fetch_feed(url) do
+    ConCache.get(:feeds, url)
+    |> case do
+      nil ->
+        do_fetch_feed(url)
+        |> case do
+          {:ok, xml} ->
+            ConCache.put(:feeds, url, xml)
+            {:ok, xml}
+
+          {:error, reason} ->
+            {:error, reason}
+        end
+
+      xml ->
+        {:ok, xml}
+    end
+  end
+
+  defp do_fetch_feed(url) do
     headers = [
       # pretend to be feedvalidator to get unredirected feeds from Publisher
       {"User-Agent", "Podlove Frontman, feedvalidator"}
