@@ -11,8 +11,12 @@
     <tbody>
       <%= for feed <- @feeds do %>
         <tr class="bg-white odd:bg-gray-100">
-          <td class="p-2"><%= feed.origin_url %></td>
-          <td class="p-2"><%= feed.alias %></td>
+          <td class="p-2">
+            <%= link feed.origin_url, to: feed.origin_url, target: "_blank", class: "text-blue-600 hover:underline" %>
+          </td>
+          <td class="p-2">
+            <%= link Routes.proxy_url(@conn, :show, String.split(feed.alias, "/")), to: Routes.proxy_url(@conn, :show, String.split(feed.alias, "/")), target: "_blank", class: "text-blue-600 hover:underline" %>
+          </td>
         </tr>
       <% end %>
     </tbody>
