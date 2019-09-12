@@ -9,8 +9,12 @@ defmodule Frontman.Directory do
   alias Frontman.Directory.Feed
   alias Frontman.UserManager.User
 
-  def list_feeds(user = %User{}) do
+  def list_feeds do
     Repo.all(Feed)
+  end
+
+  def list_feeds(user = %User{}) do
+    from(f in Feed, where: f.user_id == ^user.id) |> Repo.all()
   end
 
   def get_feed!(id), do: Repo.get!(Feed, id)

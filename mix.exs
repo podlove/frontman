@@ -46,7 +46,9 @@ defmodule Frontman.MixProject do
       {:guardian, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
       {:httpoison, "~> 1.5"},
-      {:con_cache, "~> 0.14.0"}
+      {:con_cache, "~> 0.14.0"},
+      {:quantum, "~> 2.3"},
+      {:timex, "~> 3.0"}
     ]
   end
 

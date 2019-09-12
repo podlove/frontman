@@ -22,7 +22,7 @@ defmodule FrontmanWeb.FeedController do
     user = Guardian.Plug.current_resource(conn)
 
     case Directory.create_feed(user, feed_params) do
-      {:ok, feed} ->
+      {:ok, _feed} ->
         conn
         |> put_flash(:info, "feed created.")
         |> redirect(to: Routes.feed_path(conn, :index))

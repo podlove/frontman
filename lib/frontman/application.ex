@@ -14,7 +14,8 @@ defmodule Frontman.Application do
        [
          name: :feeds,
          ttl_check_interval: false
-       ]}
+       ]},
+      Frontman.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

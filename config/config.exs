@@ -29,6 +29,15 @@ config :frontman, Frontman.UserManager.Guardian,
   issuer: "frontman",
   secret_key: "nhywU8VOY/EKENwfEgsM8HxXkeqnf2dFn+hLnQJunXtteqwinjep50k+zKwBbeR7"
 
+config :frontman, Frontman.Scheduler,
+  overlap: false,
+  jobs: [
+    refresh_cache: [
+      schedule: "*/3 * * * *",
+      task: {Frontman.Directory.Refresher, :refresh, []}
+    ]
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
