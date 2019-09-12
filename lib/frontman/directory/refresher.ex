@@ -8,6 +8,7 @@ defmodule Frontman.Directory.Refresher do
   def refresh() do
     start = System.monotonic_time(:millisecond)
 
+    # todo: use async tasks to parallelize
     Directory.list_feeds()
     |> Enum.each(&refresh_feed/1)
 
