@@ -11,6 +11,14 @@ defmodule Frontman.Directory.Feed do
     timestamps()
   end
 
+  # todo: normalise alias
+  #   - strip leading and trailing slashes
+  #   - only url safe characters
+  #   - do something with whitespace?
+  #   - make unique
+
+  # todo: rename "alias" because it's a reserved word in Elixir
+
   @doc false
   def changeset(feed, attrs) do
     feed

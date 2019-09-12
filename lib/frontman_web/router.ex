@@ -35,4 +35,11 @@ defmodule FrontmanWeb.Router do
 
     resources "/feeds", FeedController
   end
+
+  # Public routes
+  scope "/", FrontmanWeb do
+    pipe_through [:browser]
+
+    get "/f/*alias_segments", ProxyController, :show
+  end
 end

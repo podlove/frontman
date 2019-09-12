@@ -15,6 +15,10 @@ defmodule Frontman.Directory do
 
   def get_feed!(id), do: Repo.get!(Feed, id)
 
+  def get_feed_by_alias(feed_alias) do
+    Repo.get_by(Feed, alias: feed_alias)
+  end
+
   def create_feed(user = %User{}, attrs \\ %{}) do
     Ecto.build_assoc(user, :feeds)
     |> Feed.changeset(attrs)
