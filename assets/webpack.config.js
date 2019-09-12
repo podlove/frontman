@@ -70,7 +70,7 @@ module.exports = (env, options) => ({
     }),
     // new PurgecssPlugin({
     //   paths: glob.sync(
-    //     '../lib/radiator_web/@(templates|views)/**/*.@(html.eex|ex)'
+    //     '../lib/frontman_web/@(templates|views)/**/*.@(html.eex|ex)'
     //   ),
     //   extractors: [{
     //     extractor: TailwindExtractor,
