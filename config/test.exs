@@ -14,5 +14,5 @@ config :frontman, Frontman.Repo,
   username: "postgres",
   password: "postgres",
   database: "frontman_test",
-  hostname: "localhost",
+  hostname: System.get_env("DB_HOST") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
