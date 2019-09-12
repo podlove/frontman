@@ -1,18 +1,18 @@
-<div class="bg-white shadow p-8 rounded">
-  <h2 class="font-bold text-4xl mb-8">Feeds</h2>
+<div class="bg-white shadow p-8 rounded mt-8">
+  <h2 class="font-bold text-2xl mb-8">Feeds</h2>
 
-  <table>
+  <table class="w-full mb-4">
     <thead>
       <tr>
-        <th>Origin</th>
-        <th>Target</th>
+        <th class="p-2">Origin</th>
+        <th class="p-2">Target</th>
       </tr>
     </thead>
     <tbody>
       <%= for feed <- @feeds do %>
-        <tr>
-          <td><%= feed.origin_url %></td>
-          <td><%= feed.alias %></td>
+        <tr class="bg-white odd:bg-gray-100">
+          <td class="p-2"><%= feed.origin_url %></td>
+          <td class="p-2"><%= feed.alias %></td>
         </tr>
       <% end %>
     </tbody>

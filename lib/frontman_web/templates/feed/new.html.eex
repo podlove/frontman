@@ -1,17 +1,19 @@
-<div class="bg-white shadow p-8 rounded">
+<div class="bg-white shadow p-8 rounded mt-12">
 
   <h2 class="font-bold text-4xl mb-8">Add Feed</h2>
 
   <%= form_for @feed, Routes.feed_path(@conn, :create), fn f -> %>
 
     <p class="mb-12">
-      Origin URL    
-      <%= text_input f, :origin_url %>
+      <%= label f, :origin_url, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= text_input f, :origin_url, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <%= error_tag f, :origin_url %>
     </p>
 
     <p class="mb-12">
-      Alias
-      <%= text_input f, :alias %>
+      <%= label f, :alias, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= text_input f, :alias , class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+      <%= error_tag f, :alias %>
     </p>
 
     <%= submit "Add Feed", class: "bg-blue-500 hover:bg-blue-400 text-white hover:text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" %>

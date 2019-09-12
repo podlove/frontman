@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body class="font-sans bg-gray-100">
-    <header class="flex justify-between bg-gray-900 text-white items-center px-8 py-4">
-      <div class="font-medium text-4xl">
+    <header class="flex justify-between bg-gray-900 text-white items-center px-6 py-2">
+      <div class="font-medium text-2xl">
         <span>Frontman</span>
       </div>
       <div class="flex flex-row">
@@ -26,14 +26,13 @@
           </div>
         <% end %>
       </div>
-
     </header>
     <main class="container mx-auto">
       <%= if get_flash(@conn, :info) do %>
-        <p class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative mb-8" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative mb-8 mt-8" role="alert"><%= get_flash(@conn, :info) %></p>
       <% end %>
       <%= if get_flash(@conn, :error) do %>
-        <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8" role="alert"><%= get_flash(@conn, :error) %></p>
+        <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8 mt-8" role="alert"><%= get_flash(@conn, :error) %></p>
       <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
