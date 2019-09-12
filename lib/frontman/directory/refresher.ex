@@ -13,7 +13,7 @@ defmodule Frontman.Directory.Refresher do
     |> Enum.each(&refresh_feed/1)
 
     time_spent = trunc((System.monotonic_time(:millisecond) - start) / 1000)
-    IO.puts("Refreshed all feeds in #{time_spent}s")
+    Logger.info("Refreshed all feeds in #{time_spent}s")
   end
 
   def refresh_feed(feed = %Feed{}) do
